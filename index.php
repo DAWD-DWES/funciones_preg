@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="stylesheet.css">
     </head>
     <body>
-        <h2>preg_match</h2>
+        <h2>Uso de función preg_match</h2>
         <table>
             <tr><td colspan="2"><p>Verificar si una cadena contiene una palabra específica. Comprueba si en el texto se encuentra la palabra 'tutorial'. 
                         Muestra el valor de retorno de preg_match.</p></td></tr>
@@ -79,7 +79,7 @@
                 <td><!-- Escribe tu código aquí --></td>
             </tr>
         </table>
-        <h2>preg_match_all</h2>
+        <h2>Uso de función preg_match_all</h2>
         <table>
             <tr><td colspan = "2"><p>Analiza el texto e identifica todas las ocurrencias de vocales</p></td></tr>
             <tr>
@@ -133,7 +133,7 @@
                 <td><!-- Escribe tu código aquí --></td>
             </tr>
         </table>
-        <h2>preg_replace</h2>
+        <h2>Uso de función preg_replace</h2>
         <table>
             <tr><td colspan = "2"><p>Analiza y elimina todos los números de una cadena</p></td></tr>
             <tr>
@@ -182,7 +182,7 @@
                 <td><!-- Escribe tu código aquí --></td>
             </tr>
         </table>
-        <h2>preg_filter</h2>
+        <h2>Uso de función preg_filter</h2>
         <table>
             <tr><td colspan = "2"><p>Analiza y remplaza los espacios por guiones bajos en varios textos guardados en un array</p></td></tr>
             <tr>
@@ -190,7 +190,7 @@
                 <td><!-- Escribe tu código aquí --></td>
             </tr>
         </table>
-        <h2>preg_split</h2>
+        <h2>Uso de función preg_split</h2>
         <table>
             <tr><td colspan = "2"><p>Divide una cadena en palabras separadas por espacios</p></td></tr>
             <tr>
