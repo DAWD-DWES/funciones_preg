@@ -29,30 +29,12 @@
                     var_dump(preg_match($patron, $texto));
                     ?></td>
             </tr>
-            <tr><td colspan="2"><p>Busca trozos de texto que satisfagan un subpatrón.
-                        En este caso, cadenas con letras con espacios en blanco al final.
-                        Muestra el valor del texto que coincidió con el patrón completo y el texto que coincide con el
-                        primer subpatrón</p></td></tr>
-            <tr>
-                <td>$texto = 'John Doe William';</td>
-                <td><?php
-                    $texto = 'John Doe William';
-                    $patron = '/([a-zA-Z]+\s+)+/';
-                    if (preg_match($patron, $texto, $coincidencias)) {
-                        echo '<pre>';
-                        print_r($coincidencias);
-                        echo '</pre>';
-                    } else {
-                        echo "No hay coincidencias";
-                    }
-                    ?></td>
-            </tr>
             <tr><td colspan="2"><p>Comprueba si una cadena corresponde con el formato de un correo electronico correcto</p></td></tr>
             <tr>
                 <td>$texto = 'us-er@ejemplo.com';</td>
                 <td><?php
                     $texto = 'us-er@ejemplo.com';
-                    $patron = '/^([a-zA-Z0-9._-]+)@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
+                    $patron = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
                     var_dump(preg_match($patron, $texto, $coincidencias));
                     ?>
                 </td>
@@ -66,6 +48,15 @@
                     var_dump(preg_match($patron, $texto, $coincidencias));
                     ?>
                 </td>
+            </tr>
+            <tr><td colspan = "2"><p>Comprueba si una cadena corresponde con el formato de una dirección IP</p></td></tr>
+            <tr>
+                <td>$texto = '253.168.75.1';</td>
+                <td><?php
+                    $texto = '253.168.75.1';
+                    $patron = '/^25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?\.{3}25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?$/';
+                    var_dump(preg_match($patron, $texto, $coincidencias));
+                    ?></td>
             </tr>
             <tr><td colspan="2"><p>Captura y muestra las distintas secciones del teléfono siguiendo el formato anterior</p></td></tr>
             <tr>
@@ -142,15 +133,6 @@
                     }
                     ?></td>
             </tr>
-            <tr><td colspan = "2"><p>Comprueba si una cadena corresponde con el formato de una dirección IP</p></td></tr>
-            <tr>
-                <td>$texto = '253.168.75.1';</td>
-                <td><?php
-                    $texto = '253.168.75.1';
-                    $patron = '/^25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?\.{3}25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?$/';
-                    var_dump(preg_match($patron, $texto, $coincidencias));
-                    ?></td>
-            </tr>
             <tr><td colspan = "2"><p>Captura y muestra las partes de una dirección IP</p></td></tr>
             <tr>
                 <td>$texto = '253.168.75.1';</td>
@@ -173,6 +155,24 @@
                     $texto = 'foobarbaz';
                     $patron = '/(foo)(bar)(baz)/';
                     if (preg_match($patron, $texto, $coincidencias, PREG_OFFSET_CAPTURE)) {
+                        echo '<pre>';
+                        print_r($coincidencias);
+                        echo '</pre>';
+                    } else {
+                        echo "No hay coincidencias";
+                    }
+                    ?></td>
+            </tr>
+            <tr><td colspan="2"><p>Busca trozos de texto que satisfagan un subpatrón.
+                        En este caso, cadenas con letras con espacios en blanco al final.
+                        Muestra el valor del texto que coincidió con el patrón completo y el texto que coincide con el
+                        primer subpatrón</p></td></tr>
+            <tr>
+                <td>$texto = 'John Doe William ';</td>
+                <td><?php
+                    $texto = 'John Doe William';
+                    $patron = '/([a-zA-Z]+\s+)+/';
+                    if (preg_match($patron, $texto, $coincidencias)) {
                         echo '<pre>';
                         print_r($coincidencias);
                         echo '</pre>';
