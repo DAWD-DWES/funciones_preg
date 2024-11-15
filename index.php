@@ -20,14 +20,6 @@
                 <td>$texto = "123456";</td>
                 <td><!-- Escribe tu código aquí --></td>
             </tr>
-            <tr><td colspan="2"><p>Busca trozos de texto que satisfagan un subpatrón.
-                        En este caso, cadenas con letras con espacios en blanco al final.
-                        Muestra el valor del texto que coincidió con el patrón completo y el texto que coincide con el
-                        primer subpatrón</p></td></tr>
-            <tr>
-                <td>$texto = 'John Doe William';</td>
-                <td><!-- Escribe tu código aquí --></td>
-            </tr>
             <tr><td colspan="2"><p>Comprueba si una cadena corresponde con el formato de un correo electronico correcto</p></td></tr>
             <tr>
                 <td>$texto = 'us-er@ejemplo.com';</td>
@@ -36,6 +28,11 @@
             <tr><td colspan="2"><p>Comprueba si una cadena corresponde con el formato de un teléfono correcto. Ejemplo +xx (xxx) xxxx-xxxx</p></td></tr>
             <tr>
                 <td>$texto = '+17 (555) 1235-4567';</td>
+                <td><!-- Escribe tu código aquí --></td>
+            </tr>
+            <tr><td colspan = "2"><p>Comprueba si una cadena corresponde con el formato de una dirección IP</p></td></tr>
+            <tr>
+                <td>$texto = '253.168.75.1';</td>
                 <td><!-- Escribe tu código aquí --></td>
             </tr>
             <tr><td colspan="2"><p>Captura y muestra las distintas secciones del teléfono siguiendo el formato anterior</p></td></tr>
@@ -63,11 +60,6 @@
                 <td>$texto = 'https://www.ejemplo.com/ejemplo/ruta';</td>
                 <td><!-- Escribe tu código aquí --></td>
             </tr>
-            <tr><td colspan = "2"><p>Comprueba si una cadena corresponde con el formato de una dirección IP</p></td></tr>
-            <tr>
-                <td>$texto = '253.168.75.1';</td>
-                <td><!-- Escribe tu código aquí --></td>
-            </tr>
             <tr><td colspan = "2"><p>Captura y muestra las partes de una dirección IP</p></td></tr>
             <tr>
                 <td>$texto = '253.168.75.1';</td>
@@ -76,6 +68,14 @@
             <tr><td colspan = "2"><p>Captura y muestra las subcadenas 'foo', 'bar' y 'baz' junto con los offsets de cada subcadena. Usa el flag PREG_OFFSET_CAPTURE</p></td></tr>
             <tr>
                 <td>$texto = 'foobarbaz';</td>
+                <td><!-- Escribe tu código aquí --></td>
+            </tr>
+            <tr><td colspan="2"><p>Busca trozos de texto que satisfagan un subpatrón.
+                        En este caso, cadenas con letras con espacios en blanco al final.
+                        Muestra el valor del texto que coincidió con el patrón completo y el texto que coincide con el
+                        primer subpatrón</p></td></tr>
+            <tr>
+                <td>$texto = 'John Doe William';</td>
                 <td><!-- Escribe tu código aquí --></td>
             </tr>
         </table>
