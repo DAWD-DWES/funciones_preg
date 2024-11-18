@@ -15,7 +15,7 @@
                 <td>$texto = "Hola, bienvenido al tutorial de PHP."; $palabra = "tutorial";</td>
                 <td><?php
                     $texto = "Hola, bienvenido al tutorial de PHP.";
-                    $palabra = "tutorial";
+                    $palabra = "tUtOrial";
                     $patron = "/$palabra/i";
                     var_dump(preg_match($patron, $texto));
                     ?></td>
@@ -25,7 +25,7 @@
                 <td>$texto = '+17 (555) 1235-4567';</td>
                 <td><?php
                     $texto = '+17 (555) 1235-4567';
-                    $patron = '/^\+\d{1,2}\s\(\d{3}\)\s\d{4}-\d{4}$/';
+                    $patron = '/^\+\d{1,3}\s\(\d{3}\)\s\d{4}-\d{4}$/';
                     var_dump(preg_match($patron, $texto));
                     ?>
                 </td>
@@ -45,13 +45,13 @@
                 <td>$texto = '253.168.75.1';</td>
                 <td><?php
                     $texto = '253.168.75.1';
-                    $patron = '/^25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?\.{3}25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?$/';
+                    $patron = '/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/';
                     var_dump(preg_match($patron, $texto, $coincidencias));
                     ?></td>
             </tr>
             <tr><td colspan="2"><p>Comprueba y muestra la parte de una cadena que contiene una parte compuesta solo de dígitos</p></td></tr>
             <tr>
-                <td>$texto = "123456";</td>
+                <td>$texto = "123456 213123";</td>
                 <td><?php
                     $texto = "123456 213123";
                     $patron = "/\d+/";
@@ -130,8 +130,8 @@
             <tr>
                 <td>$texto = 'https://www.ejemplo.com/ejemplo/ruta';</td>
                 <td><?php
-                    $texto = 'https://www.ejemplo.com/ejemplo/ruta';
-                    $patron = '/^(\w+):\/\/([\w.]+)\/(.*)$/';
+                    $texto = 'https://www.ejemplo.com:80/ejemplo/ruta';
+                    $patron = '/^(\w+):\/\/([\w.-]+)(?::(\d+))?\/(.*)$/';
                     if (preg_match($patron, $texto, $coincidencias)) {
                         echo '<pre>';
                         print_r($coincidencias);
@@ -284,7 +284,8 @@
                     ?>
                 </td>
             </tr>
-            <tr><td colspan = "2"><p>Captura y muestra todas las ocurrencias de subpatrones que representan el nombre, el apellido y la edad de la cadena. Usa nombres para cada uno de los subpatrones.</p></td></tr>
+            <tr><td colspan = "2"><p>Captura y muestra todas las ocurrencias de subpatrones que representan el nombre, el apellido y la edad de la cadena. 
+                        Usa nombres para cada uno de los subpatrones.</p></td></tr>
             <tr>
                 <td>$texto = 'John Smith, 25 años';</td>
                 <td><?php
@@ -422,95 +423,95 @@
                     var_dump(preg_replace($patron, $sustitucion, $texto));
                     ?></td>
             </tr>
-
-            <h2>Uso de función preg_filter</h2>
-            <table>
-                <tr><td colspan = "2"><p>Filtra y reemplaza un array con entradas que puedan tener números, 
-                            cambiando los números por doble asterisco (**) y eliminando las entradas que no contengan dígitos</p></td></tr>
-                <tr>
-                    <td>$texto = ['abc123', '456def', 'no match', '789ghi'];</td>
-                    <td><?php
-                        $texto = ['abc123', '456def', 'no match', '789ghi'];
-                        $patron = '/\d+/';
-                        $sustitucion = '**';
-                        echo '<pre>';
-                        print_r(preg_filter($patron, $sustitucion, $texto));
-                        echo '</pre>';
-                        ?></td>
-                </tr>
-                <tr><td colspan = "2"><p>Analiza y remplaza los espacios por guiones bajos en varios textos guardados en un array</p></td></tr>
-                <tr>
-                    <td>$texto = ['Esta es una cadena con espacios', 'Esta cadena también tiene espacios', 'Estacadenanotieneespaciosenblanco'];</td>
-                    <td><?php
-                        $texto = ['Esta es una cadena con espacios', 'Esta cadena también tiene espacios', 'Estacadenanotieneespaciosenblanco'];
-                        $patron = '/\s/';
-                        $sustitucion = '_';
-                        echo '<pre>';
-                        print_r(preg_filter($patron, $sustitucion, $texto));
-                        echo '</pre>';
-                        ?></td>
-                </tr>
-            </table>
-            <h2>Uso de función preg_split</h2>
-            <table>
-                <tr><td colspan = "2"><p>Divide una cadena en palabras separadas por espacios</p></td></tr>
-                <tr>
-                    <td><pre>$texto = 'Esto es una cadena            de prueba';</pre></td>
-                    <td><?php
-                        $texto = 'Esto es una cadena            de prueba';
-                        echo '<pre>';
-                        print_r(preg_split('/\s+/', $texto));
-                        echo '</pre>';
-                        ?></td>
-                </tr>
-                <tr><td colspan = "2"><p>Divide una cadena en partes separadas por comas o punto y coma</p></td></tr>
-                <tr>
-                    <td>$texto = 'Manzanas, naranjas, plátanos; peras; kiwis, mangos';</td>
-                    <td><?php
-                        $texto = 'Manzanas, naranjas, plátanos; peras; kiwis, mangos';
-                        $patron = '/[,;]\s*/';
-                        echo '<pre>';
-                        print_r(preg_split($patron, $texto));
-                        echo '</pre>';
-                        ?></td>
-                </tr>
-                <tr><td colspan = "2"><p>Divide una cadena en partes que contienen números solamente</p></td></tr>
-                <tr>
-                    <td>$texto = 'abc123def456ghi789jkl';</td>
-                    <td><?php
-                        $texto = 'abc123def456ghi789jkl';
-                        $patron = '/\D+/';
-                        echo '<pre>';
-                        print_r(preg_split($patron, $texto));
-                        echo '</pre>';
-                        ?></td>
-                </tr>
-                <tr><td colspan = "2"><p>Divide una cadena en partes que contienen números solamente eliminando las partes vacías</p></td></tr>
-                <tr>
-                    <td>$texto = 'abc123def456ghi789jkl';
-                    </td>
-                    <td><?php
-                        $texto = 'abc123def456ghi789jkl';
-                        $patron = '/\D+/';
-                        echo '<pre>';
-                        print_r(preg_split($patron, $texto, -1, PREG_SPLIT_NO_EMPTY));
-                        echo '</pre>';
-                        ?></td>
-                </tr>
-                <tr><td colspan = "2"><p>Divide una cadena en partes que contienen números solamente eliminando las partes vacías 
-                            y muestra la posición en la que se encuentran a partir del comienzo de la cadena. Además solamente se 
+        </table>
+        <h2>Uso de función preg_filter</h2>
+        <table>
+            <tr><td colspan = "2"><p>Filtra y reemplaza un array con entradas que puedan tener números, 
+                        cambiando los números por doble asterisco (**) y eliminando las entradas que no contengan dígitos</p></td></tr>
+            <tr>
+                <td>$texto = ['abc123', '456def', 'no match', '789ghi'];</td>
+                <td><?php
+                    $texto = ['abc123', '456def', 'no match', '789ghi'];
+                    $patron = '/\d+/';
+                    $sustitucion = '**';
+                    echo '<pre>';
+                    print_r(preg_filter($patron, $sustitucion, $texto));
+                    echo '</pre>';
+                    ?></td>
+            </tr>
+            <tr><td colspan = "2"><p>Analiza y remplaza los espacios por guiones bajos en varios textos guardados en un array</p></td></tr>
+            <tr>
+                <td>$texto = ['Esta es una cadena con espacios', 'Esta cadena también tiene espacios', 'Estacadenanotieneespaciosenblanco'];</td>
+                <td><?php
+                    $texto = ['Esta es una cadena con espacios', 'Esta cadena también tiene espacios', 'Estacadenanotieneespaciosenblanco'];
+                    $patron = '/\s/';
+                    $sustitucion = '_';
+                    echo '<pre>';
+                    print_r(preg_filter($patron, $sustitucion, $texto));
+                    echo '</pre>';
+                    ?></td>
+            </tr>
+        </table>
+        <h2>Uso de función preg_split</h2>
+        <table>
+            <tr><td colspan = "2"><p>Divide una cadena en palabras separadas por espacios</p></td></tr>
+            <tr>
+                <td><pre>$texto = 'Esto es una cadena            de prueba';</pre></td>
+                <td><?php
+                    $texto = 'Esto es una cadena            de prueba';
+                    echo '<pre>';
+                    print_r(preg_split('/\s+/', $texto));
+                    echo '</pre>';
+                    ?></td>
+            </tr>
+            <tr><td colspan = "2"><p>Divide una cadena en partes separadas por comas o punto y coma</p></td></tr>
+            <tr>
+                <td>$texto = 'Manzanas, naranjas, plátanos; peras; kiwis, mangos';</td>
+                <td><?php
+                    $texto = 'Manzanas, naranjas, plátanos; peras; kiwis, mangos';
+                    $patron = '/[,;]\s*/';
+                    echo '<pre>';
+                    print_r(preg_split($patron, $texto));
+                    echo '</pre>';
+                    ?></td>
+            </tr>
+            <tr><td colspan = "2"><p>Divide una cadena en partes que contienen números solamente</p></td></tr>
+            <tr>
+                <td>$texto = 'abc123def456ghi789jkl';</td>
+                <td><?php
+                    $texto = 'abc123def456ghi789jkl';
+                    $patron = '/\D+/';
+                    echo '<pre>';
+                    print_r(preg_split($patron, $texto));
+                    echo '</pre>';
+                    ?></td>
+            </tr>
+            <tr><td colspan = "2"><p>Divide una cadena en partes que contienen números solamente eliminando las partes vacías</p></td></tr>
+            <tr>
+                <td>$texto = 'abc123def456ghi789jkl';
+                </td>
+                <td><?php
+                    $texto = 'abc123def456ghi789jkl';
+                    $patron = '/\D+/';
+                    echo '<pre>';
+                    print_r(preg_split($patron, $texto, -1, PREG_SPLIT_NO_EMPTY));
+                    echo '</pre>';
+                    ?></td>
+            </tr>
+            <tr><td colspan = "2"><p>Divide una cadena en partes que contienen números solamente eliminando las partes vacías 
+                        y muestra la posición en la que se encuentran a partir del comienzo de la cadena. Además solamente se 
                         muestran las dos primeras divisiones</p></td></tr>
-                <tr>
-                    <td>$texto = 'abc123def456ghi789jkl';
-                    </td>
-                    <td><?php
-                        $texto = 'abc123def456ghi789jkl';
-                        $patron = '/\D+/';
-                        echo '<pre>';
-                        print_r(preg_split($patron, $texto, 2, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_OFFSET_CAPTURE));
-                        echo '</pre>';
-                        ?></td>
-                </tr>
-            </table>
+            <tr>
+                <td>$texto = 'abc123def456ghi789jkl';
+                </td>
+                <td><?php
+                    $texto = 'abc123def456ghi789jkl';
+                    $patron = '/\D+/';
+                    echo '<pre>';
+                    print_r(preg_split($patron, $texto, 2, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_OFFSET_CAPTURE));
+                    echo '</pre>';
+                    ?></td>
+            </tr>
+        </table>
     </body>
 </html>
