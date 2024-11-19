@@ -12,10 +12,21 @@
             <tr><td colspan="2"><p>Verificar si una cadena contiene una palabra específica. Comprueba si en el texto se encuentra la palabra 'tutorial'. 
                         Muestra el valor de retorno de preg_match.</p></td></tr>
             <tr>
-                <td>$texto = "Hola, bienvenido al tutorial de PHP."; $palabra = "tutorial";</td>
+                <td>$texto = "Hola, bienvenido al tutorial de PHP";</td>
                 <td><?php
                     $texto = "Hola, bienvenido al tutorial de PHP.";
-                    $palabra = "tUtOrial";
+                    $palabra = "tutorial";
+                    $patron = "/$palabra/";
+                    var_dump(preg_match($patron, $texto));
+                    ?></td>
+            </tr>
+            <tr><td colspan="2"><p>Verificar si una cadena contiene una palabra específica. Comprueba si en el texto se encuentra la palabra 'tutorial'. 
+                        En este caso la palabra 'tutorial' puede contener mayúsculas o minúsculas indistintamente. Muestra el valor de retorno de preg_match.</p></td></tr>
+            <tr>
+                <td>$texto = "Hola, bienvenido al tutorial de PHP";</td>
+                <td><?php
+                    $texto = "Hola, bienvenido al tutorial de PHP.";
+                    $palabra = "TUTORIAL";
                     $patron = "/$palabra/i";
                     var_dump(preg_match($patron, $texto));
                     ?></td>
