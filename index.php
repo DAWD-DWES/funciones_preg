@@ -12,7 +12,13 @@
             <tr><td colspan="2"><p>Verificar si una cadena contiene una palabra específica. Comprueba si en el texto se encuentra la palabra 'tutorial'. 
                         Muestra el valor de retorno de preg_match.</p></td></tr>
             <tr>
-                <td>$texto = "Hola, bienvenido al tutorial de PHP."; $palabra = "tutorial";</td>
+                <td>$texto = "Hola, bienvenido al tutorial de PHP."</td>
+                <td><!-- Escribe tu código aquí --></td>
+            </tr>
+            <tr><td colspan="2"><p>Verificar si una cadena contiene una palabra específica. Comprueba si en el texto se encuentra la palabra 'tutorial'. 
+                        En este caso la palabra tutorial puede tener mayúculas o minúsculas indistintamente. Muestra el valor de retorno de preg_match.</p></td></tr>
+            <tr>
+                <td>$texto = "Hola, bienvenido al tutorial de PHP."</td>
                 <td><!-- Escribe tu código aquí --></td>
             </tr>
             <tr><td colspan="2"><p>Comprueba si una cadena corresponde con el formato de un teléfono correcto. Ejemplo +xx (xxx) xxxx-xxxx</p></td></tr>
